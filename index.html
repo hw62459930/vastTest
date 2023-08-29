@@ -30,15 +30,11 @@
 
     <!-- 3번 항목: JavaScript로 VAST 설정 적용 -->
     <script>
-        // document.addEventListener('DOMContentLoaded', function () {
         var player = videojs('my-video');
-        var adsCancelTimeout = 3000;
 
         var vastPlugin = player.vastClient({
             adTagUrl: 'http://localhost:8000/vast.xml',
-            playAdAlways: true,
-            //Note: As requested we set the preroll timeout at the same place than the adsCancelTimeout
-            adCancelTimeout: adsCancelTimeout,
+            playAdAlways: true
         });
 
         player.on('reset', function () {
