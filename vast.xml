@@ -8,13 +8,19 @@
             </Impression>
             <Creatives>
                 <Creative>
-                    <Linear>
+                    <Linear skipoffset="00:00:05">
                         <Duration>00:00:30</Duration>
                         <MediaFiles>
                             <MediaFile delivery="progressive" type="video/mp4" width="640" height="360">
                                 <![CDATA[http://localhost:8001/sample_ads.mp4]]>
                             </MediaFile>
                         </MediaFiles>
+                        <!-- 재생하려고 한번 더  클릭할떄 켜지는 광고 사이트. 아래 예시는 쿠팡이 켜지도록 만듬.-->
+                        <!-- <VideoClicks>
+                            <ClickThrough>
+                                <![CDATA[https://www.coupang.com/]]>
+                            </ClickThrough>
+                        </VideoClicks> -->
                     </Linear>
                 </Creative>
             </Creatives>

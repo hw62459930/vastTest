@@ -7,44 +7,47 @@
     <title>VAST Ad with Video.js</title>
 
     <!-- Video.js 5 -->
-    <link href="http://vjs.zencdn.net/5.4.6/video-js.css" rel="stylesheet">
-    <script src="http://vjs.zencdn.net/5.4.6/video.js"></script>
+    <link href="http://vjs.zencdn.net/7.21.1/video-js.css" rel="stylesheet">
+    <script src="http://vjs.zencdn.net/7.21.1/video.js"></script>
 
     <!-- VAST 플러그인의 JavaScript -->
     <!-- Common -->
     <link href="videojs-vast-vpaid/bin/videojs.vast.vpaid.min.css" rel="stylesheet">
     <!-- Video.js 4 -->
     <script src="videojs-vast-vpaid/bin/videojs_5.vast.vpaid.min.js"></script>
+
+    <script src="videojs-vast-vpaid/bin/es5-shim.js"></script>
+
+    <script src="videojs-vast-vpaid/bin/ie8fix.js"></script>
 </head>
 
 <body>
     <!-- 2번 항목: 비디오 플레이어 구성 -->
-    <video id="my-video" class="video-js" controls preload="auto" width="640" height="360">
+    <video id="my-video" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" width="640"
+        height="360">
         <source src="big_buck_bunny_720p_30mb.mp4" type="video/mp4" />
     </video>
 
     <!-- 3번 항목: JavaScript로 VAST 설정 적용 -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var player = videojs('my-video');
-            var adsCancelTimeout = 3000;
+        // document.addEventListener('DOMContentLoaded', function () {
+        var player = videojs('my-video');
+        var adsCancelTimeout = 3000;
 
-            var vastPlugin = player.vastClient({
-                adTagUrl: 'http://localhost:8000/vast.xml',
-                playAdAlways: true,
-                //Note: As requested we set the preroll timeout at the same place than the adsCancelTimeout
-                adCancelTimeout: adsCancelTimeout,
-            });
-
-            player.on('reset', function () {
-                if (!vastPlugin.isEnabled()) {
-                    vastPlugin.enable();
-                } else {
-                    vastAd.disable();
-                }
-            });
+        var vastPlugin = player.vastClient({
+            adTagUrl: 'http://localhost:8000/vast.xml',
+            playAdAlways: true,
+            //Note: As requested we set the preroll timeout at the same place than the adsCancelTimeout
+            adCancelTimeout: adsCancelTimeout,
         });
 
+        player.on('reset', function () {
+            if (!vastPlugin.isEnabled()) {
+                vastPlugin.enable();
+            } else {
+                vastAd.disable();
+            }
+        });
 
     </script>
 </body>

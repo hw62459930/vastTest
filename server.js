@@ -36,8 +36,6 @@ app.get('/sample_ads.mp4', (req, res) => {
   res.sendFile(__dirname + '/sample_ads.mp4');
 })
 
-
-
 // 서버 시작
 const PORT = 8000;
 app.listen(PORT, () => {
